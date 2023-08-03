@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpn22edf5yamp"]
+
+[ext_resource type="Script" path="res://overlay.gd" id="1_dhvlk"]
+
+[node name="Overlay" type="Node2D"]
+script = ExtResource("1_dhvlk")

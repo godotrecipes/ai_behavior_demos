@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://g7rp4dma4au6"]
+
+[ext_resource type="Script" path="res://hurt_box.gd" id="1_46bok"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xhvmt"]
+
+[node name="HurtBox" type="Area2D" groups=["hurtbox"]]
+script = ExtResource("1_46bok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xhvmt")

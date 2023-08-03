@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4s1i44dimqu4"]
+
+[ext_resource type="Texture2D" uid="uid://dq5esredg8cda" path="res://assets/Destructible Objects Sprite Sheet.png" id="1_p2nmo"]
+[ext_resource type="Script" path="res://chest.gd" id="2_37mdb"]
+[ext_resource type="Texture2D" uid="uid://bnyroklay35ca" path="res://assets/colored_transparent.png" id="3_cp21d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvnf0"]
+atlas = ExtResource("3_cp21d")
+region = Rect2(374, 68, 16, 16)
+
+[node name="Chest" type="Sprite2D"]
+texture = ExtResource("1_p2nmo")
+region_enabled = true
+region_rect = Rect2(24, 730, 17, 13)
+script = ExtResource("2_37mdb")
+icon = SubResource("AtlasTexture_kvnf0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3wakudbduocd"]
+
+[ext_resource type="Script" path="res://pet.gd" id="1_3r2u5"]
+[ext_resource type="Texture2D" uid="uid://8bok7bafhgx4" path="res://assets/Fox Sprite Sheet.png" id="1_kr52s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wwcp"]
+size = Vector2(16, 11)
+
+[sub_resource type="Animation" id="Animation_88eik"]
+resource_name = "tail_wag"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+
+[sub_resource type="Animation" id="Animation_fx07i"]
+resource_name = "idle"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [14, 27]
+}
+
+[sub_resource type="Animation" id="Animation_41i3e"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [28, 35]
+}
+
+[sub_resource type="Animation" id="Animation_0jgtm"]
+resource_name = "pounce"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [42, 52]
+}
+
+[sub_resource type="Animation" id="Animation_era2l"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [56, 60]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0mjex"]
+_data = {
+"idle": SubResource("Animation_fx07i"),
+"new_animation": SubResource("Animation_era2l"),
+"pounce": SubResource("Animation_0jgtm"),
+"run": SubResource("Animation_41i3e"),
+"tail_wag": SubResource("Animation_88eik")
+}
+
+[node name="Pet" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_3r2u5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_kr52s")
+hframes = 14
+vframes = 7
+frame = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -5.5)
+shape = SubResource("RectangleShape2D_5wwcp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0mjex")
+}
